@@ -1186,13 +1186,13 @@ local function Hide(notify: boolean?)
 	task.spawn(closeSearch)
 
 	Debounce = true
-	if notify then
-		if useMobilePrompt then 
-			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping 'Show'.", Duration = 7, Image = 4400697855})
-		else
-			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = `The interface has been hidden, you can unhide the interface by tapping {getSetting("General", "rayfieldOpen")}.`, Duration = 7, Image = 4400697855})
-		end
-	end
+	--if notify then
+	--	if useMobilePrompt then 
+	--		RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping 'Show'.", Duration = 7, Image = 4400697855})
+	--	else
+	--		RayfieldLibrary:Notify({Title = "Interface Hidden", Content = `The interface has been hidden, you can unhide the interface by tapping {getSetting("General", "rayfieldOpen")}.`, Duration = 7, Image = 4400697855})
+	--	end
+	--end
 
 	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 470, 0, 0)}):Play()
 	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 470, 0, 45)}):Play()
@@ -1564,13 +1564,13 @@ end
 
 
 function RayfieldLibrary:CreateWindow(Settings)
-	print('creating window')
+	--print('creating window')
 	if Rayfield:FindFirstChild('Loading') then
 		if getgenv and not getgenv().rayfieldCached then
 			Rayfield.Enabled = true
-			Rayfield.Loading.Visible = true
+			--Rayfield.Loading.Visible = true
 
-			task.wait(1.4)
+			--task.wait(1.4)
 			Rayfield.Loading.Visible = false
 		end
 	end
@@ -1621,7 +1621,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	LoadingFrame.Subtitle.TextTransparency = 1
 
 	if Settings.ShowText then
-		MPrompt.Title.Text = 'Show '..Settings.ShowText
+		MPrompt.Title.Text = ''..Settings.ShowText
 	end
 
 	LoadingFrame.Version.TextTransparency = 1
@@ -1629,7 +1629,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	LoadingFrame.Subtitle.Text = Settings.LoadingSubtitle or "Interface Suite"
 
 	if Settings.LoadingTitle ~= "Rayfield Interface Suite" then
-		LoadingFrame.Version.Text = "Rayfield UI"
+		LoadingFrame.Version.Text = "v1.0"
 	end
 
 	if Settings.Icon and Settings.Icon ~= 0 and Topbar:FindFirstChild('Icon') then
@@ -4061,4 +4061,3 @@ task.delay(4, function()
 end)
 
 return RayfieldLibrary
-
